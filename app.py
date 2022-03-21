@@ -18,7 +18,8 @@ def index():
 @app.post('/predict')
 def solvability(data: get_id):
     data = data.dict()
-    client_id = data[client_id]
+    client_id = data['client_id']
+    client_id = int(client_id)
    # print(classifier.predict([[variance,skewness,curtosis,entropy]]))
     prediction  = loaded_model.predict((X.loc[[client_id]]).values)
     probabilite = loaded_model.predict_proba((X.loc[[client_id]]).values)
