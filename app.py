@@ -37,12 +37,4 @@ def solvability(data: get_id):
 
 if __name__ == '__main__':
     uvicorn.run(app, host='127.0.0.1', port=8000)
-# uvicorn app:app --reload
-# 122334
-# déployer api sur heroku
-# dashboard avec sidebar pour choisir client
-# afficher infos client
-# avoir un bouton pour prédire (appel d'api)
-# afficher prédiction proba + solva
-# bouton afficher interprétabilité (sauvegarder et importer shap value)
-# placer valeur client sur distribution de 3/4 variables
+
