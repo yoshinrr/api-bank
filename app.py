@@ -23,12 +23,13 @@ def solvability(data: get_id):
    # print(model.predict([client_id, probability]))
     prediction  = loaded_model.predict((X.loc[[client_id]]).values)
     probabilite = loaded_model.predict_proba((X.loc[[client_id]]).values)
+    probabilite = probabilite[0][0]*100
     if(prediction[0] > 0.):
-        prediction  = "Non solvable"
-        probabilite = "Probabilité de non solvabilité: ",probabilite[0][1]*100, "%"
+        prediction  = "non solvable"
+        
     else:
-        prediction = "Solvable"
-        probabilite = "Probabilité de solvabilité: ",probabilite[0][0]*100, "%"
+        prediction = "solvable"
+        
     return {
         'prediction': prediction,
         'probabilite': probabilite
