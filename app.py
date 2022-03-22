@@ -8,7 +8,8 @@ import re
 
 app = FastAPI()
 loaded_model = joblib.load('model.pkl')
-X = pd.read_csv("X.csv")
+url = "https://media.githubusercontent.com/media/yoshinrr/api-bank/main/X.csv"
+X = pd.read_csv(url)
 
 @app.get('/')
 def index():
@@ -19,7 +20,7 @@ def index():
 def solvability(data: get_id):
     data = data.dict()
     client_id = data['client_id']
-   # print(classifier.predict([[variance,skewness,curtosis,entropy]]))
+   # print(model.predict([client_id, probability]))
     prediction  = loaded_model.predict((X.loc[[client_id]]).values)
     probabilite = loaded_model.predict_proba((X.loc[[client_id]]).values)
     if(prediction[0] > 0.):
