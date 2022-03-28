@@ -17,8 +17,8 @@ shap_values_tree = joblib.load ("shap_values_tree.pkl")
 def request_prediction(data):
     headers = CaseInsensitiveDict()
     headers = {"Content-Type": "application/json", "accept":"application/json"}
-    url = "https://oc-projet7.herokuapp.com/predict"
-    response = requests.post(url,headers=headers,data=data)
+    url1 = "https://oc-projet7.herokuapp.com/predict"
+    response = requests.post(url1,headers=headers,data=data)
 
     if response.status_code != 200:
         raise Exception(
@@ -50,12 +50,12 @@ def main():
 
 
     if st.button('Voir les données utilisées pour la prédicition'):
-        #webbrowser.open_new_tab(graph_url)
+        
         st.set_option('deprecation.showPyplotGlobalUse', False)
         fig, ax = plt.subplots()
         st.header('Interprétabilité globale')
         st.pyplot(ax=shap.summary_plot(shap_values_tree, feature_names=X.columns))
-        #st.pyplot(fig)
+        
         st.header('Interprétabilité individuelle')
         st.pyplot(ax=shap.bar_plot(shap_values_tree[0][client_id], feature_names=X.columns, max_display = 10))
         st.title("Informations client")
