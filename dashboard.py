@@ -67,5 +67,3 @@ def main():
         else :
             st.bar_chart(X.iloc[int(client_id)-10:int(client_id)+10][["AMT_INCOME_TOTAL","AMT_CREDIT"]])
             
-if __name__ == '__main__':
-    main()
