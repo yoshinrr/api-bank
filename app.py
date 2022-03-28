@@ -41,16 +41,6 @@ def solvability(data: get_id):
         'prediction': prediction,
         'probabilite': probabilite
     }
-@app.post('/graph')    
-async def feat(data:get_id):
-    data = data.dict()
-    client_id = data['client_id']
-    fig = shap.summary_plot(shap_values_tree, feature_names=X.columns,show=False)
-    buf = BytesIO()
-    plt.savefig(buf, format="png")
-    buf.seek(0)   
-    return (StreamingResponse(buf, media_type="image/png"))
-
 
 if __name__ == '__main__':
     uvicorn.run(app, host='127.0.0.1', port=8000)
