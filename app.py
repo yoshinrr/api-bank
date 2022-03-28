@@ -4,12 +4,19 @@ import numpy as np
 import pandas as pd
 import joblib
 from id import get_id
+import matplotlib.pyplot as plt
 import re
+import shap
+from io import BytesIO
+from starlette.responses import StreamingResponse
 
 app = FastAPI()
 loaded_model = joblib.load('model.pkl')
 url = "https://media.githubusercontent.com/media/yoshinrr/api-bank/main/X.csv"
 X = pd.read_csv(url)
+shap_values = joblib.load ("shap_values_tree.pkl")
+explainer = shap.TreeExplainer(loaded_model)
+#shap_values_tree = explainer.shap_values((X.loc[[client_id]]).values)
 
 @app.get('/')
 def index():
@@ -34,6 +41,15 @@ def solvability(data: get_id):
         'prediction': prediction,
         'probabilite': probabilite
     }
+@app.post('/graph')    
+async def feat(data:get_id):
+    data = data.dict()
+    client_id = data['client_id']
+    fig = shap.summary_plot(shap_values_tree, feature_names=X.columns,show=False)
+    buf = BytesIO()
+    plt.savefig(buf, format="png")
+    buf.seek(0)   
+    return (StreamingResponse(buf, media_type="image/png"))
 
 
 if __name__ == '__main__':
