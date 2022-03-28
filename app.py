@@ -4,19 +4,14 @@ import numpy as np
 import pandas as pd
 import joblib
 from id import get_id
-import matplotlib.pyplot as plt
 import re
-import shap
-from io import BytesIO
-from starlette.responses import StreamingResponse
+
+
 
 app = FastAPI()
 loaded_model = joblib.load('model.pkl')
 url = "https://media.githubusercontent.com/media/yoshinrr/api-bank/main/X.csv"
 X = pd.read_csv(url)
-shap_values = joblib.load ("shap_values_tree.pkl")
-explainer = shap.TreeExplainer(loaded_model)
-#shap_values_tree = explainer.shap_values((X.loc[[client_id]]).values)
 
 @app.get('/')
 def index():
