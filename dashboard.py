@@ -14,7 +14,6 @@ url = "https://raw.githubusercontent.com/yoshinrr/api-bank/main/X2.csv"
 X = pd.read_csv(url)
 X = X.set_index("SK_ID_CURR")
 shap_values_tree = joblib.load ("shap_values_tree.pkl")
-st.text(X)
 def request_prediction(data):
     headers = CaseInsensitiveDict()
     headers = {"Content-Type": "application/json", "accept":"application/json"}
@@ -47,8 +46,7 @@ def main():
 
 
     st.write('Ce client est ',pred["prediction"],'et sa probabilité de solvabilité est de {:.1f}%'.format(pred["probabilite"]))
-    st.write(X.columns)
-    st.write(ind)
+    
     if st.button('Voir les données utilisées pour la prédicition'):
         #webbrowser.open_new_tab(graph_url)
         st.set_option('deprecation.showPyplotGlobalUse', False)
