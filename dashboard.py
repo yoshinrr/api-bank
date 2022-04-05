@@ -10,7 +10,7 @@ import joblib
 import streamlit.components.v1 as components
 import matplotlib.pyplot as plt
 import numpy as np
-url = "https://media.githubusercontent.com/media/yoshinrr/api-bank/main/X2.csv"
+url = "https://raw.githubusercontent.com/yoshinrr/api-bank/main/X2.csv"
 X = pd.read_csv(url)
 X = X.set_index("SK_ID_CURR")
 shap_values_tree = joblib.load ("shap_values_tree.pkl")
