@@ -62,7 +62,7 @@ def main():
         ['Total des revenus et des crédits', 'Coûts en biens', 'Coût en rente'])
     st.title("Informations client")
 
-    st.table((X.loc[client_id]).T)
+    st.dataframe((X.loc[client_id]).T)
 
     if informations == 'Total des revenus et des crédits':
         if ind<20:
