@@ -62,8 +62,6 @@ def main():
         ['Total des revenus et des crédits', 'Coûts en biens', 'Coût en rente'])
     st.title("Informations client")
 
-    st.dataframe(X.loc[client_id])
-
     if informations == 'Total des revenus et des crédits':
         if ind<20:
             st.bar_chart(X.iloc[ind:ind+19][["AMT_INCOME_TOTAL","AMT_CREDIT"]])
@@ -85,6 +83,8 @@ def main():
             st.bar_chart(X.iloc[ind-19:ind+1]['AMT_ANNUITY_x'])
         else :
             st.bar_chart(X.iloc[ind-10:ind+10]['AMT_ANNUITY_x'])
+    
+    st.dataframe(X.loc[client_id])
 
 
 if __name__ == '__main__':
