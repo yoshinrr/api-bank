@@ -58,11 +58,11 @@ def main():
         st.pyplot(ax=shap.bar_plot(shap_values_tree[0][ind], feature_names=X.columns, max_display = 10))
     informations = st.sidebar.selectbox(
         'Quelles informations du client souhaitez vous afficher ?',
-        #RATIO_INCOME_GOODS #INCOME_PER_FAMILY_MEMBER
-        ['Total des revenus et des crédits', 'Dépenses en biens', 'Ration entre revenu et dépenses'])
+       
+        ['Total des revenus et des crédits', 'Coûts en biens', 'Coût en rente'])
     st.title("Informations client")
 
-    st.table((X.loc[client_id])[0:8].T)
+    st.table((X.loc[client_id]).T)
 
     if informations == 'Total des revenus et des crédits':
         if ind<20:
