@@ -80,11 +80,11 @@ def main():
             st.bar_chart(X.iloc[ind-10:ind+10]['AMT_GOODS_PRICE'])
     else:
         if ind<20:
-            st.bar_chart(X.iloc[ind:ind+19]['FLAG_OWN_CAR'])
+            st.bar_chart(X.iloc[ind:ind+19]['AMT_ANNUITY_x'])
         elif ind>len(X)-20:
-            st.bar_chart(X.iloc[ind-19:ind+1]['FLAG_OWN_CAR'])
+            st.bar_chart(X.iloc[ind-19:ind+1]['AMT_ANNUITY_x'])
         else :
-            st.bar_chart(X.iloc[ind-10:ind+10]['FLAG_OWN_CAR'])
+            st.bar_chart(X.iloc[ind-10:ind+10]['AMT_ANNUITY_x'])
 
 
 if __name__ == '__main__':
