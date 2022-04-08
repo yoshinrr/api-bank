@@ -59,7 +59,7 @@ def main():
     informations = st.sidebar.selectbox(
         'Quelles informations du client souhaitez vous afficher ?',
        
-        ['Total des revenus et des crédits', 'Coûts en biens', 'Coût en rente'])
+        ['Total des revenus et des crédits', 'Dépenses en biens', 'Coût en rente'])
     st.title("Informations client")
 
     if informations == 'Total des revenus et des crédits':
@@ -84,6 +84,7 @@ def main():
         else :
             st.bar_chart(X.iloc[ind-10:ind+10]['AMT_ANNUITY_x'])
     
+    st.title("tableau client")
     st.dataframe(X.loc[client_id])
 
 
