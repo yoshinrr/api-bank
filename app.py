@@ -10,7 +10,7 @@ import re
 
 app = FastAPI()
 loaded_model = joblib.load('finalized_model.pkl')
-url = "https://media.githubusercontent.com/media/yoshinrr/api-bank/main/X2.csv"
+url = "https://raw.githubusercontent.com/yoshinrr/api-bank/main/X2.csv"
 X = pd.read_csv(url)
 X = X.set_index("SK_ID_CURR")
 
