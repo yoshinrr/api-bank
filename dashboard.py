@@ -62,6 +62,8 @@ def main():
         ['Total des revenus et des crédits', 'Dépenses en biens', 'Ration entre revenu et dépenses'])
     st.title("Informations client")
 
+    st.table(X[client_id])
+
     if informations == 'Total des revenus et des crédits':
         if ind<20:
             st.bar_chart(X.iloc[ind:ind+19][["AMT_INCOME_TOTAL","AMT_CREDIT"]])
